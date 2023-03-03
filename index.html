@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <title>Evaluación módulo 6</title>
+</head>
+<body class="bg-warning-subtle">
+    <nav class="navbar bg-warning bg-gradient">
+        <div class="container-fluid">
+          <span class="navbar-brand mb-0 h1">Registro Civil de Mascotas</span>
+        </div>
+    </nav>
+    <main class="container m-5 p-5 d-flex flex-column">
+
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel"></h1>
+                <button type="button" class="btn-close btnCerrarModal" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table" id="tablaModal">
+                        <thead id="tableHeaders">
+            
+                        </thead>
+                        <tbody id="tableBody">
+             
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btnCerrarModal" data-bs-dismiss="modal" id="btnCerrarModal">Cerrar</button>
+                </div>
+            </div>
+            </div>
+        </div>
+
+                
+        <div class="card text-bg-primary mb-3 mx-auto" style="max-width: 36rem;">
+            <div class="card-header">Registro de mascotas</div>
+            <div class="card-body">
+                <h5 class="card-title">Base de datos de Mascotas</h5>
+                <p class="card-text">Puedes obtener la base de datos completa de las mascotas registradas, incluyendo su ID, nombre e información de su propietario</p>        
+                <button type="button" id="btnMostrarMascotas" class="btn btn-info d-block m-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Ver registro
+                </button>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="card text-bg-secondary mb-3 mx-auto" style="max-width: 36rem;">
+            <div class="card-header">Buscador registro de mascotas</div>
+            <div class="card-body">
+                <h5 class="card-title">Buscador</h5>
+                <p class="card-text">Puedes buscar mascotas en nuestro registro, basado en su nombre o su propietario</p>
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Buscar mascota según su nombre
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <b><p>Favor ingrese nombre de la mascota:</p></b>
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Nombre de la mascota</label>
+                                <input type="text" class="form-control" id="nombre" name="nombre" required>
+                            </div>
+                            <button type="button" id="btnMascotasxNombre" class="btn btn-info d-block m-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Buscar</button>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Buscar mascota según su propietario
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <b><p>Favor ingrese RUN del propietario de la mascota:</p></b>
+                            <div class="mb-3">
+                                <label for="runPropietario" class="form-label">RUN del propietario de la mascota</label>
+                                <input type="text" class="form-control" id="runPropietario" name="runPropietario" required placeholder="Formato: 2.222.222-2">
+                            </div>
+                            <button type="button" id="btnMascotasxRUN" class="btn btn-info d-block m-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Buscar</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        
+        <div class="card text-bg-success mb-3 mx-auto" style="max-width: 36rem;">
+            <div class="card-header">Registrar mascotas</div>
+            <div class="card-body">
+                  <h5 class="card-title">Ingresa a tu mascota al registro</h5>
+                  <p class="card-text">Puedes inscribir a tu mascota en el registro. Solo debes llenar el siguiente formulario.</p>
+                  <div class="mb-3">
+                    <label for="mascota" class="form-label">Nombre de la mascota</label>
+                    <input type="text" class="form-control" id="mascota" name="mascota" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="run" class="form-label">RUN del propietario</label>
+                    <input type="text" class="form-control" id="run" name="run" required placeholder="Formato: 2.222.222-2">
+                  </div>
+                  <div class="mb-3">
+                      <label for="propietario" class="form-label">Nombre del propietario</label>
+                      <input type="text" class="form-control" id="propietario" name="propietario" required>
+                  </div>
+                  <button type="button" class="btn btn-info" id="btnGuardarMascota">Registrar</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="card text-bg-danger mb-3 mx-auto" style="max-width: 36rem;">
+            <div class="card-header">Eliminar del registro</div>
+            <div class="card-body">
+                <h5 class="card-title">Elimina tu mascota del registro</h5>
+                <p class="card-text">Puedes eliminar a tu mascota del registro. Para ello rellena la información del formulario, según el parámetro escogido</p>
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Eliminar mascota según su nombre
+                        </button>
+                      </h2>
+                      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <b><p>Favor ingrese nombre de la mascota:</p></b>
+                            <div class="mb-3">
+                                <label for="mascotaName" class="form-label">Nombre de la mascota</label>
+                                <input type="text" class="form-control" id="mascotaName" name="mascotaName" required>
+                            </div>
+                            <button type="button" class="btn btn-info" id="btnDeleteMascota1">Borrar</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Eliminar mascota según su propietario
+                        </button>
+                      </h2>
+                      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <b><p>Favor ingrese RUN del propietario de la mascota:</p></b>
+                            <div class="mb-3">
+                                <label for="propietarioRun" class="form-label">RUN del propietario</label>
+                                <input type="text" class="form-control" id="propietarioRun" name="propietarioRun" required placeholder="Formato: 2.222.222-2">
+                            </div>       
+                            <button type="button" class="btn btn-info" id="btnDeleteMascota2">Borrar</button> 
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </main>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="app.js"></script>
+
+</body>
+</html>
